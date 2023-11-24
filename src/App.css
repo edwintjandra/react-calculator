@@ -244,7 +244,18 @@ sub {
   color: white;
   border-radius: 40px;
   width: 80px;
-  margin-left: 135px;
+  margin-left: 130px;
+  margin-top: 10px;
+}
+
+.sendButtonPassive {
+  background-color: #585656;
+  border: none;
+  padding: 10px;
+  color: white;
+  border-radius: 40px;
+  width: 80px;
+  margin-left: 130px;
   margin-top: 10px;
 }
 

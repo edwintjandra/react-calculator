@@ -9,30 +9,43 @@ const Support = () => {
         isVisible: false,
         message: '',
       });
+    const [isFilled,setFilled] =useState(false);
 
-    const handleClick=(event: React.MouseEvent<HTMLButtonElement>)=>{
-        event.preventDefault();
 
+    const handleChange=()=>{
+      setFilled(isInputFilled());
+    }
+
+    const isInputFilled=()=>{
         const firstName = document.querySelector('#firstName')! as HTMLInputElement;
         const lastName = document.querySelector('#lastName')! as HTMLInputElement;
         const email = document.querySelector('#email')! as HTMLInputElement;
         const topic = document.querySelector('input[name="options"]:checked');
       
         if (((firstName.value === null || firstName.value.trim() === '')) || ((lastName.value === null || lastName.value.trim() === '')) || ((email.value === null || email.value.trim() === '') || !topic)) {
-           setModal({
-            isVisible: true,
-            message: 'Please fill in all required fields.',
-          });
-          return;
+          return false;
         }
 
         if (!email.value.includes("@")) {
-             setModal({
-                isVisible: true,
-                message: 'Please fill in the correct email format.',
-              });
-             return ;
+            return false;
         }
+
+        return true;
+    }
+
+
+    const handleClick=(event: React.MouseEvent<HTMLButtonElement>)=>{
+        event.preventDefault();
+
+        if(!isInputFilled()){
+          setModal({
+                isVisible: true,
+                message: 'Please fill in the required fields and format.',
+              });
+
+          return;
+        }
+       
 
         let newTicket = '';
 
@@ -68,11 +81,11 @@ const Support = () => {
                 <label htmlFor="">Name <sup>*</sup> </label> <br />
                 <div className='formName'>
                     <span>
-                        <input id="firstName" type="text"  /> 
+                        <input id="firstName" type="text"  onChange={handleChange}  /> 
                         <sub>first</sub>
                     </span>
                     <span>
-                        <input id="lastName" type="text" /> 
+                        <input id="lastName" type="text"  onChange={handleChange} /> 
                         <sub>last</sub>
                     </span>
                 </div>
@@ -80,7 +93,7 @@ const Support = () => {
             <div>
                 <label className='fullInputWidth'>
                     <span>Email</span> <sup>*</sup><br />
-                    <input id="email" type="email" />
+                    <input id="email" type="email"  onChange={handleChange} />
                 </label>
             </div>
             <div>
@@ -89,13 +102,13 @@ const Support = () => {
                     <p>What can we help you today</p>
                     
                     <label >
-                        <input type="radio" name="options" value="option1"/>
+                        <input type="radio" name="options" value="option1"  onChange={handleChange}/>
                         General
                     </label>
                     <br />
 
                     <label >
-                        <input type="radio" name="options" value="option2"/>
+                        <input type="radio" name="options" value="option2"  onChange={handleChange}/>
                         Bug
                     </label>
 
@@ -107,7 +120,7 @@ const Support = () => {
             <label htmlFor="">Description <sup>optional</sup> </label>  <br />
 
             <textarea name="" id=""  rows={15} cols={25} ></textarea>
-            <button className='sendButton' onClick={handleClick}>SEND</button>
+            <button  className={isFilled ? 'sendButton' : 'sendButtonPassive'} onClick={handleClick}>SEND</button>
         </div>
       </form>  )}
 
