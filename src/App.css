@@ -24,9 +24,260 @@
   color: white;
 }
 
+.my-custom-class {
+  color: red;
+}
+
 .App-link {
   color: #61dafb;
 }
+
+#root {
+  padding-top: 50px;
+}
+
+.calculator {
+  width: 20%;
+  margin:auto;
+   color: white;
+}
+
+.output {
+  padding: 30px;
+   justify-content : flex-end;
+   font-size: 25px;
+  background-color: #585657;
+  position:relative;
+  height: 30px;
+}
+
+.historyList {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  width: 100px;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  font-size: 10px;
+  list-style: none;
+  padding: 0;
+  
+ }
+
+ .historyList::-webkit-scrollbar {
+  width: 0;
+}
+
+.historyList::-webkit-scrollbar-thumb {
+  background-color: #ddd;
+  outline: 1px solid slategrey;
+}
+
+.result {
+  position: absolute;
+  right: 10px;
+  bottom: 5px;
+  font-size: 30px;
+}
+
+.calculator-buttons {
+  padding: 10px;
+  padding-top: 25px;
+  display: grid;
+  grid-template-columns: repeat(3, 0.8fr) 0.8fr; 
+  grid-template-rows: repeat(5, 45px);  
+  gap: 10px;
+  background-color: black;
+}
+
+.digitButton,
+.operatorButton {
+   text-align: center;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: #A5A5A5;
+  border: none;
+  color: white;
+ }
+
+ .digitButton:hover{
+  background-color: #808080;
+}
+
+.digitButton:active,
+.operatorButton:active {
+  transform: scale(0.95);
+}
+
+ .rightButton {
+    background-color: #FF9F0A;
+    margin-left: 5px;
+ }
+
+ .rightButton:hover {
+  background-color: #E88E00;  
+}
+ 
+ .lastButton{
+  grid-column: span 2;
+  border-radius: 25px;
+   margin:5px;
+   }
+
+.lastButton:last-child {
+background-color: #FF9F0A;
+}
+
+.supportPage {
+  background-color: #866242;
+}
+
+/* */
+
+.support {
+  width: 50%;
+  margin:auto;
+  background-color: black;
+  color: white;
+  padding: 10px;
+}
+
+.support h1 {
+  border-bottom: solid gray 1px;
+  padding-bottom: 10px;
+  margin-bottom: 5px;
+ }
+
+.supportForm {
+  display: flex;
+  gap: 15px;
+ }
+
+  
+
+ .fullInputWidth input{
+  width: 100%;
+ }
+
+ .formName {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+ }
+
+.supportForm input,textarea {
+  background-color: black;
+  border: 1px solid gray;
+  border-radius: 5px;
+  color: white;
+  padding: 5px;
+  box-sizing: border-box;
+  }
+
+.supportForm input:focus,textarea:focus {
+  border: 1px solid #FF9F0A;
+  outline: none;  
+  }
+ 
+.formRight sup {
+  color: #585657;
+}
+
+sup {
+  color: red;
+}
+
+sub {
+  color: #6B6969;
+}
+
+.ticketNumber {
+  padding: 50px;
+  text-align: center;
+}
+
+.ticketNumber h2 {
+  color: #FF9F09;
+}
+
+.note {
+  color: black;
+}
+
+.checkboxes {
+  padding: 15px;
+  border: dotted gray 1px;
+  background-color: #100F0F;
+}
+
+.checkboxes input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  border: 1px solid white;
+  background-color: #100F0F;
+  outline: none;
+  cursor: pointer;
+}
+
+/* Style for the radio button when checked */
+.checkboxes input[type="radio"]:checked {
+  background-color: #FF9F0A;
+  border-color: white;
+}
+
+.checkboxes p {
+  margin-top: 0;
+}
+
+.sendButton {
+  background-color: #FF9F0A;
+  border: none;
+  padding: 10px;
+  color: white;
+  border-radius: 40px;
+  width: 80px;
+  margin-left: 135px;
+  margin-top: 10px;
+}
+
+.modal {
+     position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Semi-transparent gray overlay */
+    z-index: 1000;
+    padding: 0;
+}
+
+.warningModal {
+  color: #FF9F0A;
+ }
+
+.modal-content {
+  margin:0;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 30%;
+  transform: translate(-50%, -50%);
+  z-index: 1;  
+  color: black;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+ }
+
+ 
 
 @keyframes App-logo-spin {
   from {
@@ -35,4 +286,50 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+
+@media (max-width: 900px) {
+  .calculator {
+    width: 30%;
+  }
+
+  .support {
+    width: 80%;
+    padding: 15px;
+  }
+  
+  .support h1 {
+    margin:0;
+  }
+  
+  .supportForm {
+    display: block;
+   }
+
+   .sendButton {
+    margin-left: 20px;
+  }
+
+  .formName {
+    display: flex;
+    flex-direction: column;
+   }
+
+   .formName input {
+    width: 100%;
+   }
+
+
+   .modal-content{
+    width: 60%;
+   }
+}
+
+@media (max-width: 500px) {
+  .calculator {
+    width: 50%;
+  }
+
 }
