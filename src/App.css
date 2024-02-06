@@ -320,7 +320,10 @@ sub {
    }
 
    .sendButton {
-    margin-left: 20px;
+    margin-left: 10px;
+  }
+  .sendButtonPassive {
+    margin-left: 10px;
   }
 
   .formName {
